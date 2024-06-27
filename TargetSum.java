@@ -1,13 +1,14 @@
 class TargetSum{
     public static int targetsum(int [] nums,int idx,int target){
-        if(target ==0)return true;
-        if(idx == 0) return nums[0] == target;
-        boolean notTake = Targetsum(idx-1,target,nums);
-        boolean Take = false;
-        if(target>=nums[idx]){
-            Take = Targetsum(idx-1,target-nums[idx],nums);
+        if (target == 0) return 1;
+        if (idx < 0) return 0;
+
+        int notTake = targetsum(nums, idx - 1, target);
+        int take = 0;
+        if (target >= nums[idx]) {
+            take = targetsum(nums, idx - 1, target - nums[idx]);
         }
-        return Take || notTake;
+        return take + notTake;
 
     }
     public static void main(String[] args) {
